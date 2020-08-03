@@ -18,32 +18,32 @@
             </div>
             <div class="col-md-6">
                 <div  class="input-section half-width">
-                    <input id="after-press"  class="form-control" type="text">
+                    <input id="input-number"  class="form-control" type="text">
                     <div class="numbers">
                         <div class="calc-body">
                             <div class="calc-button-row">
-                              <div onclick="pressBtn(7)" class="button">7</div>
-                              <div onclick="pressBtn(8)" class="button">8</div>
-                              <div onclick="pressBtn(9)" class="button">9</div>
+                              <div onclick="inputButton(7)" class="button">7</div>
+                              <div onclick="inputButton(8)" class="button">8</div>
+                              <div onclick="inputButton(9)" class="button">9</div>
                             </div>
                             <div class="calc-button-row">
-                              <div onclick="pressBtn(4)" class="button">4</div>
-                              <div onclick="pressBtn(5)" class="button">5</div>
-                              <div onclick="pressBtn(6)" class="button">6</div>
+                              <div onclick="inputButton(4)" class="button">4</div>
+                              <div onclick="inputButton(5)" class="button">5</div>
+                              <div onclick="inputButton(6)" class="button">6</div>
                             </div>
                             <div class="calc-button-row">
-                              <div onclick="pressBtn(1)" class="button">1</div> 
-                              <div onclick="pressBtn(2)" class="button">2</div>
-                              <div onclick="pressBtn(3)" class="button">3</div>
+                              <div onclick="inputButton(1)" class="button">1</div> 
+                              <div onclick="inputButton(2)" class="button">2</div>
+                              <div onclick="inputButton(3)" class="button">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div onclick="deleteNumber()" class="button"><</div>
-                                <div onclick="pressBtn(0)"    class="button">0</div>
+                                <div onclick="removeNumber()" class="button"><</div>
+                                <div onclick="inputButton(0)"    class="button">0</div>
                                 <div onclick="clearNumber()"  class="button">C</div>
                             </div>
                             <div>
-                                <button onclick="matchPin()" type="submit" class="submit-btn">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <button onclick="actionLeft()" onclick="matchPin()" type="submit" class="submit-btn">Submit</button>
+                                <p  class="action-left"> <span id="actionLeft" >3</span> try left</p>
                             </div>
                     </div>
                 </div>
@@ -64,28 +64,29 @@
 
         //pin submission
 
-        function pressBtn(num){
-            document.getElementById("after-press").value= document.getElementById("after-press").value+ num;
+        function inputButton(num){
+            document.getElementById("input-number").value= document.getElementById("input-number").value+ num;
           
             
         }
         // clear all number
         
         function clearNumber(){
-                document.getElementById("after-press").value='';          
+            document.getElementById("input-number").value='';          
             
         }
 
-        // delete one by one
-        function deleteNumber(){
-            console.clear()
-                // document.getElementById("after-press").value='';          
-            
+        // remove one by one
+        function removeNumber(){
+            var stringInput = document.getElementById("input-number").value; 
+            var inputLength = stringInput.length
+            var remove = stringInput.slice(0,inputLength-1);
+            document.getElementById("input-number").value = remove;
         }
 
         //matching
         function matchPin(){
-            let afterPress=document.getElementById("after-press").value;
+            let afterPress=document.getElementById("input-number").value;
             let pinGenerate=document.getElementById("generate-num").value
             
             if(afterPress == pinGenerate){
@@ -103,16 +104,26 @@
           
             
         }
-        // function isEqual(){
-        //     (document.getElementById("after-press").value= document.getElementById("generate-num").value)
-        // }
 
-        // function matchPin(isEqual){
-        //     if(isEqual==true){
-        //         console.log("dhsjkd")
-        //     }
+        // action left section
 
-        // }
+        
+        function actionLeft() {
+            const txt= document.getElementById("actionLeft").innerText;
+            const int = parseInt(txt);
+            int--;
+            const val=document.getElementById("actionLeft");
+            val.innerText=int;
+
+
+        }
+        
+        
+       }
+
+       }
+
+
 
 
     </script>
