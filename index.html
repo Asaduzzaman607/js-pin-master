@@ -42,7 +42,7 @@
                                 <div onclick="clearNumber()"  class="button">C</div>
                             </div>
                             <div>
-                                <button onclick="actionLeft()" onclick="matchPin()" type="submit" class="submit-btn">Submit</button>
+                                <button onclick="matchPin();actionLeft();" type="submit" class="submit-btn">Submit</button>
                                 <p  class="action-left"> <span id="actionLeft" >3</span> try left</p>
                             </div>
                     </div>
@@ -104,24 +104,21 @@
           
             
         }
-
         // action left section
 
-        
+      
         function actionLeft() {
-            const txt= document.getElementById("actionLeft").innerText;
-            const int = parseInt(txt);
-            int--;
-            const val=document.getElementById("actionLeft");
-            val.innerText=int;
-
-
+            var stringAction= document.getElementById("actionLeft").innerText;
+            var intAction = parseInt(stringAction);
+            if (intAction > 1){
+                intAction--;
+            }
+            const actionUpdate=document.getElementById("actionLeft");
+            actionUpdate.innerText=intAction;
+                
         }
         
-        
-       }
-
-       }
+    
 
 
 
