@@ -56,27 +56,27 @@
     </div>
 
     <script>
-        //pin generate
+        //generating pin number
         function pinGenerate(){
             const randomPin= Math.floor(Math.random() * 8999 + 1000);
             document.getElementById("generate-num").value = randomPin;
         }
 
-        //pin submission
+        //submitting pin number
 
         function inputButton(num){
             document.getElementById("input-number").value= document.getElementById("input-number").value+ num;
           
             
         }
-        // clear all number
+        // clearing all input number
         
         function clearNumber(){
             document.getElementById("input-number").value='';          
             
         }
 
-        // remove one by one
+        // removing value one by one
         function removeNumber(){
             var stringInput = document.getElementById("input-number").value; 
             var inputLength = stringInput.length
@@ -84,24 +84,32 @@
             document.getElementById("input-number").value = remove;
         }
 
-        //matching
-        function matchPin(){
-            let afterPress=document.getElementById("input-number").value;
-            let pinGenerate=document.getElementById("generate-num").value
-            
-            if(afterPress == pinGenerate){
+        //matching pin numbers
+          function matchPin(){
+           
+            let inputNumber = document.getElementById("input-number").value;
+            let generatedNumber = document.getElementById("generate-num").value;
+
+            if(inputNumber == generatedNumber){
 
             document.getElementById("matched").style.display= "block"; 
             document.getElementById("tryAgain").style.display= "none";
              
            }
-           if(afterPress !== pinGenerate){
+           if(inputNumber !== generatedNumber){
 
             document.getElementById("tryAgain").style.display= "block";
             document.getElementById("matched").style.display= "none";
+            
 
            }
-          
+           if (inputNumber == "" && generatedNumber == "") {
+             alert('Please Generate Your Pin First');
+             document.getElementById("tryAgain").style.display= "none";
+             document.getElementById("matched").style.display= "none";
+            
+             }
+        
             
         }
         // action left section
@@ -110,18 +118,18 @@
         function actionLeft() {
             var stringAction= document.getElementById("actionLeft").innerText;
             var intAction = parseInt(stringAction);
-            if (intAction > 1){
+            if (intAction > 0){
                 intAction--;
+            }
+            if (intAction == 0){
+                alert("You have tried so many times.Please try again later")
             }
             const actionUpdate=document.getElementById("actionLeft");
             actionUpdate.innerText=intAction;
+            
                 
         }
         
-    
-
-
-
 
     </script>
 </body>
