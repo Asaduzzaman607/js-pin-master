@@ -10,6 +10,7 @@ function pinGenerate(){
 function inputButton(num){
     document.getElementById("input-number").value= document.getElementById("input-number").value+ num;
     
+    
   
     
 }
@@ -38,6 +39,8 @@ function removeNumber(){
 
     document.getElementById("matched").style.display= "block"; 
     document.getElementById("tryAgain").style.display= "none";
+    document.getElementById("submitBtn").style.display= "none";
+    document.getElementById("actionParagraph").style.display= "none";
      
    }
    if(inputNumber !== generatedNumber){
@@ -53,9 +56,10 @@ function removeNumber(){
      document.getElementById("matched").style.display= "none";
     
      }
-     if(inputNumber.length <= 0){
-         
+     if(inputNumber.length <=0 || generatedNumber.length<=0){
+
         alert('No Pin/Please Generate Your Pin First');
+        
 
         document.getElementById("tryAgain").style.display= "none";
         document.getElementById("matched").style.display= "none";
@@ -78,7 +82,7 @@ function actionLeft() {
         actionUpdate.innerText=intAction;
         
     }
-    if (intAction == 0){
+    if (intAction == 0 ){
         document.getElementById("actionLeft").disabled = true;
         alert("You have tried so many times.Please try again later.")
         
