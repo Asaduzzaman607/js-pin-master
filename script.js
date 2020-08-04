@@ -39,8 +39,8 @@ function removeNumber(){
 
     document.getElementById("matched").style.display= "block"; 
     document.getElementById("tryAgain").style.display= "none";
-    document.getElementById("submitBtn").style.display= "none";
     document.getElementById("actionParagraph").style.display= "none";
+    document.getElementById("submitBtn").disabled = true;
      
    }
    if(inputNumber !== generatedNumber){
