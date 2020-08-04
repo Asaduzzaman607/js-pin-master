@@ -39,7 +39,6 @@ function removeNumber(){
 
     document.getElementById("matched").style.display= "block"; 
     document.getElementById("tryAgain").style.display= "none";
-    document.getElementById("actionParagraph").style.display= "none";
     document.getElementById("submitBtn").disabled = true;
      
    }
@@ -69,6 +68,7 @@ function removeNumber(){
 
     
 }
+    
 // action left section
 
 
@@ -84,7 +84,7 @@ function actionLeft() {
     }
     if (intAction == 0 ){
         document.getElementById("actionLeft").disabled = true;
-        alert("You have tried so many times.Please try again later.")
+        document.getElementById("submitBtn").disabled = true;
         
     }
     
